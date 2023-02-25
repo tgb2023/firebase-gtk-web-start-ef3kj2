@@ -10,8 +10,13 @@ import "firebase/firestore";
 import * as firebaseui from 'firebaseui';
 
 // Document elements
-const startRsvpButton = document.getElementById('startRsvp');
+const startBuyButton = document.getElementById('startBuy');
+const startSellButton= document.getElementById('startSell');
+const startLogOutButton= document.getElementById('logOut');
+
+
 const guestbookContainer = document.getElementById('guestbook-container');
+const buyContainer = document.getElementById('buy-container');
 
 const form = document.getElementById('leave-message');
 const input = document.getElementById('message');
@@ -28,6 +33,7 @@ var guestbookListener = null;
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAg7WuG7cdZpWTYA7qDNLddQt8UiSHd8FY",
   authDomain: "the-gold-bank.firebaseapp.com",
@@ -35,8 +41,8 @@ const firebaseConfig = {
   projectId: "the-gold-bank",
   storageBucket: "the-gold-bank.appspot.com",
   messagingSenderId: "548182857320",
-  appId: "1:548182857320:web:acf1ce40d19f0434bb0ddd",
-  measurementId: "G-5GLZQ70Q8N"
+  appId: "1:548182857320:web:3011f7cbe2a2d263bb0ddd",
+  measurementId: "G-VG3DRYZ5CQ"
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -66,22 +72,44 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 firebase.auth().onAuthStateChanged((user)=> {
   if (user) {
-    startRsvpButton.textContent = "LOGOUT";
-    guestbookContainer.style.display = "block";
+    startLogOutButton.textContent = "Log Out";
+    guestbookContainer.style.display = "show";
   }
   else {
-    startRsvpButton.textContent = "RSVP"
+    startLogOutButton.textContent = "Log In"
     guestbookContainer.style.display = "none";
   }
 });
 
-
-startRsvpButton.addEventListener("click",
+startLogOutButton.addEventListener("click",
  () => {
     if (firebase.auth().currentUser) {
       // User is signed in; allows user to sign out
       firebase.auth().signOut();
+      startLogOutButton.textContent = "Log In";
     } else {
+      // No user is signed in; allows user to sign in
+      ui.start("#firebaseui-auth-container", uiConfig);
+    }
+});
+
+var buttonFlag=true;
+startBuyButton.addEventListener("click",
+ () => {
+    if (firebase.auth().currentUser) {
+      // User is signed in; allows user to sign out
+      if(  buttonFlag=true )
+      {
+        startBuyButton.textContent="Buying";
+        buttonFlag= false;
+      } else {
+        buttonFlag = true;
+        startBuyButton.textContent="Cancel";
+        
+      }
+
+
+       } else {
       // No user is signed in; allows user to sign in
       ui.start("#firebaseui-auth-container", uiConfig);
     }

@@ -9,23 +9,46 @@
  
   <!-- <img src="https://firebasestorage.googleapis.com/v0/b/fir-images-a61c9.appspot.com/o/firestore.png?alt=media&token=56d039dc-4a6c-477b-a153-a4bb8234646f" /> -->
   <!-- <img src="https://firebasestorage.googleapis.com/v0/b/fir-images-a61c9.appspot.com/o/hosting.png?alt=media&token=57c8adb6-08c4-43f7-9395-4c299896a36c" /> -->
-  <img src="https://firebasestorage.googleapis.com/v0/b/fir-images-a61c9.appspot.com/o/codelab.png?alt=media&token=f45f808c-ce40-4b34-944c-8d8fac00e13d" />
+  <img src="https://images.pexels.com/photos/321452/pexels-photo-321452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
 
  <section id="event-details-container">
-      <h1>Firebase Meetup</h1>
+      <h1>The Gold Bank</h1>
+      <button id="logOut">Log In</button>
+      <section id="firebaseui-auth-container"></section>
 
-      <p><i class="material-icons">calendar_today</i> October 30</p>
-      <p><i class="material-icons">location_city</i> San Francisco</p>
-      <button id="startRsvp">RSVP</button>
-  </section>
+      <p>Todays Gold Rate: 
+          <br/>
+          <br>Buy  -  Rs 5000.00 </br>
+          <br>Sell -  Rs 4000.00</br>
+        
+        </p>
+
+   </section>
 
   <hr>
 
-  <section id="firebaseui-auth-container"></section>
 
   <section id="description-container">
-      <h2> What we'll be doing </h2>
-      <p>Join us for a day full of Firebase Workshops and Pizza!</p>
+      <h2> Your Account Balance is 0</h2>
+      <button id="startBuy">Buy Gold</button>
+      <section id="buy-container">
+        <h2>Buy Gold</h2>
+        <form id="buyGold">
+         <label>Select Grams : </label>
+         <input type="text" id="goldQty">
+         <br/>
+         <label>Gold Price : </label><br/>
+         <button type="submit">
+             <span>Buy</span>
+          </button>
+        </form>
+    
+
+
+      </section>
+      <button id="startSell">Sell Gold</button>
+ 
+
   </section>
 
   <section id="guestbook-container">
